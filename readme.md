@@ -104,14 +104,6 @@ SECRET_KEY="your-secret-key"
 PRODUCTION="false" # Initially set to false for development
 ```
 
-**Frontend**
-- Create a `.env` file in the `frontend` directory
-- Add the following variable:
-```bash
-# Backend URL (adjust if needed)
-REACT_APP_BASE_URL="http://localhost:8000" 
-```
-
 **Important**
 - Replace all placeholders (e.g., your_database_name, your_email) with your actual values.
 - Exclude the `.env` file from version control to protect sensitive information.
