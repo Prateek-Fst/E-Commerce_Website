@@ -1,9 +1,9 @@
 import axios from "axios";
-const API_BASE = "http://localhost:8000";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const createWishlistItem=async(data)=>{
     try {
-        const res=await axios.post(`${API_BASE}/wishlist`,data)
+        const res=await axios.post(`${apiUrl}/wishlist`,data)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -12,7 +12,7 @@ export const createWishlistItem=async(data)=>{
 
 export const fetchWishlistByUserId=async(id)=>{
     try {
-        const res=await axios.get(`${API_BASE}/wishlist/user/${id}`)
+        const res=await axios.get(`${apiUrl}/wishlist/user/${id}`)
         const totalResults=await res.headers.get("X-Total-Count")
         return {data:res.data,totalResults:totalResults}
     } catch (error) {
@@ -22,7 +22,7 @@ export const fetchWishlistByUserId=async(id)=>{
 
 export const updateWishlistItemById=async(update)=>{
     try {
-        const res=await axios.patch(`${API_BASE}/wishlist/${update._id}`,update)
+        const res=await axios.patch(`${apiUrl}/wishlist/${update._id}`,update)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -31,7 +31,7 @@ export const updateWishlistItemById=async(update)=>{
 
 export const deleteWishlistItemById=async(id)=>{
     try {
-        const res=await axios.delete(`${API_BASE}/wishlist/${id}`)
+        const res=await axios.delete(`${apiUrl}/wishlist/${id}`)
         return res.data
     } catch (error) {
         throw error.response.data

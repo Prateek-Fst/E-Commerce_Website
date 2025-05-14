@@ -1,9 +1,9 @@
 import axios from "axios";
-const API_BASE = "http://localhost:8000";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const addProduct=async(data)=>{
     try {
-        const res=await axios.post(`${API_BASE}/products`,data)
+        const res=await axios.post(`${apiUrl}/products`,data)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -37,7 +37,7 @@ export const fetchProducts=async(filters)=>{
     }
     
     try {
-        const res=await axios.get(`${API_BASE}/products?${queryString}`)
+        const res=await axios.get(`${apiUrl}/products?${queryString}`)
         const totalResults=await res.headers.get("X-Total-Count")
         return {data:res.data,totalResults:totalResults}
     } catch (error) {
@@ -46,7 +46,7 @@ export const fetchProducts=async(filters)=>{
 }
 export const fetchProductById=async(id)=>{
     try {
-        const res=await axios.get(`${API_BASE}/products/${id}`)
+        const res=await axios.get(`${apiUrl}/products/${id}`)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -54,7 +54,7 @@ export const fetchProductById=async(id)=>{
 }
 export const updateProductById=async(update)=>{
     try {
-        const res=await axios.patch(`${API_BASE}/products/${update._id}`,update)
+        const res=await axios.patch(`${apiUrl}/products/${update._id}`,update)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -62,7 +62,7 @@ export const updateProductById=async(update)=>{
 }
 export const undeleteProductById=async(id)=>{
     try {
-        const res=await axios.patch(`${API_BASE}/products/undelete/${id}`)
+        const res=await axios.patch(`${apiUrl}/products/undelete/${id}`)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -70,7 +70,7 @@ export const undeleteProductById=async(id)=>{
 }
 export const deleteProductById=async(id)=>{
     try {
-        const res=await axios.delete(`${API_BASE}/products/${id}`)
+        const res=await axios.delete(`${apiUrl}/products/${id}`)
         return res.data
     } catch (error) {
         throw error.response.data

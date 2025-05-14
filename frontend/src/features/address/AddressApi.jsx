@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_BASE = "http://localhost:8000";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const addAddress=async(address)=>{
     try {
-        const res=await axios.post(`${API_BASE}/address`,address)
+        const res=await axios.post(`${apiUrl}/address`,address)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -12,7 +12,7 @@ export const addAddress=async(address)=>{
 }
 export const fetchAddressByUserId=async(id)=>{
     try {
-        const res=await axios.get(`${API_BASE}/address/user/${id}`)
+        const res=await axios.get(`${apiUrl}/address/user/${id}`)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -20,7 +20,7 @@ export const fetchAddressByUserId=async(id)=>{
 }
 export const updateAddressById=async(update)=>{
     try {
-        const res=await axios.patch(`${API_BASE}/address/${update._id}`,update)
+        const res=await axios.patch(`${apiUrl}/address/${update._id}`,update)
         return res.data
     } catch (error) {
         throw error.response.data
@@ -28,7 +28,7 @@ export const updateAddressById=async(update)=>{
 }
 export const deleteAddressById=async(id)=>{
     try {
-        const res=await axios.delete(`${API_BASE}/address/${id}`)
+        const res=await axios.delete(`${apiUrl}/address/${id}`)
         return res.data
     } catch (error) {
         throw error.response.data

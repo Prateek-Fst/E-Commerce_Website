@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_BASE = "http://localhost:8000";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const signup = async (cred) => {
     try {
-        const res = await axios.post(`${API_BASE}/auth/signup`, cred);
+        const res = await axios.post(`${apiUrl}/auth/signup`, cred);
         return res.data;
     } catch (error) {
         throw error.response.data;
@@ -13,7 +13,7 @@ export const signup = async (cred) => {
 
 export const login = async (cred) => {
     try {
-        const res = await axios.post(`${API_BASE}/auth/login`, cred);
+        const res = await axios.post(`${apiUrl}/auth/login`, cred);
         return res.data;
     } catch (error) {
         throw error.response.data;
@@ -22,7 +22,7 @@ export const login = async (cred) => {
 
 export const verifyOtp = async (cred) => {
     try {
-        const res = await axios.post(`${API_BASE}/auth/verify-otp`, cred);
+        const res = await axios.post(`${apiUrl}/auth/verify-otp`, cred);
         return res.data;
     } catch (error) {
         throw error.response.data;
@@ -31,7 +31,7 @@ export const verifyOtp = async (cred) => {
 
 export const resendOtp = async (cred) => {
     try {
-        const res = await axios.post(`${API_BASE}/auth/resend-otp`, cred);
+        const res = await axios.post(`${apiUrl}/auth/resend-otp`, cred);
         return res.data;
     } catch (error) {
         throw error.response.data;
@@ -40,7 +40,7 @@ export const resendOtp = async (cred) => {
 
 export const forgotPassword = async (cred) => {
     try {
-        const res = await axios.post(`${API_BASE}/auth/forgot-password`, cred);
+        const res = await axios.post(`${apiUrl}/auth/forgot-password`, cred);
         return res.data;
     } catch (error) {
         throw error.response.data;
@@ -49,7 +49,7 @@ export const forgotPassword = async (cred) => {
 
 export const resetPassword = async (cred) => {
     try {
-        const res = await axios.post(`${API_BASE}/auth/reset-password`, cred);
+        const res = await axios.post(`${apiUrl}/auth/reset-password`, cred);
         return res.data;
     } catch (error) {
         throw error.response.data;
@@ -58,7 +58,7 @@ export const resetPassword = async (cred) => {
 
 export const checkAuth = async () => {
     try {
-        const res = await axios.get(`${API_BASE}/auth/check-auth`);
+        const res = await axios.get(`${apiUrl}/auth/check-auth`);
         return res.data;
     } catch (error) {
         throw error.response.data;
@@ -67,7 +67,7 @@ export const checkAuth = async () => {
 
 export const logout = async () => {
     try {
-        const res = await axios.get(`${API_BASE}/auth/logout`);
+        const res = await axios.get(`${apiUrl}/auth/logout`);
         return res.data;
     } catch (error) {
         throw error.response.data;
