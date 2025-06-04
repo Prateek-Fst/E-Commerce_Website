@@ -24,7 +24,24 @@ connectToDB()
 
 
 // middlewares
-server.use(cors({origin:process.env.ORIGIN,credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://e-commerce-website-t7yn.vercel.app'
+];
+
+server.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  exposedHeaders: ['X-Total-Count'],
+  methods: ['GET', 'POST', 'PATCH', 'DELETE']
+}));
+
 server.use(express.json())
 server.use(cookieParser())
 server.use(morgan("tiny"))
