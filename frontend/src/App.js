@@ -36,6 +36,7 @@ function App() {
 
         {
           loggedInUser?.isAdmin?(
+            // admin routes
             <>
             <Route path='/admin/dashboard' element={<Protected><AdminDashboardPage/></Protected>}/>
             <Route path='/admin/product-update/:id' element={<Protected><ProductUpdatePage/></Protected>}/>
@@ -44,6 +45,7 @@ function App() {
             <Route path='*' element={<Navigate to={'/admin/dashboard'}/>}/>
             </>
           ):(
+            // user routes
             <>
             <Route path='/' element={<Protected><HomePage/></Protected>}/>
             <Route path='/cart' element={<Protected><CartPage/></Protected>}/>
@@ -55,10 +57,14 @@ function App() {
             </>
           )
         }
+
         <Route path='*' element={<NotFoundPage/>} />
+
       </>
     )
   )
+
+  
   return isAuthChecked ? <RouterProvider router={routes}/> : "";
 }
 

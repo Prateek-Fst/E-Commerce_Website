@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "https://e-commerce-website-dt09.onrender.com";
+
 
 export const signup = async (cred) => {
     try {
@@ -12,6 +13,7 @@ export const signup = async (cred) => {
 };
 
 export const login = async (cred) => {
+    console.log("hello ", apiUrl)
     try {
         const res = await axios.post(`${apiUrl}/auth/login`, cred);
         return res.data;
